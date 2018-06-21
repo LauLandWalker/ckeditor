@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>CKEDITOR</title>
+</head>
+<body>
+<form action="POST" id="form">
+    <textarea name="editor" id="editor" cols="30" rows="10"></textarea>
+    <button type="submit">submit</button>
+
+    <div id="postResultDiv"></div>
+    <script>
+        CKEDITOR.replace('editor')
+    </script>
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('form').submit(function (event) {
+            event.preventDefault();
+            var editor = CKEDITOR.instances.editor;
+            var data = editor.getData();
+            alert(data);
+        })
+    });
+</script>
+</body>
+</html>
